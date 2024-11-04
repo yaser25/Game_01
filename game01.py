@@ -1,10 +1,14 @@
 import curses
 import random
 import time
-
+mi = '🚀'
+E = '😈'
+jon = '🍎'
+star = '⭐'
 stdscr = curses.initscr()
 curses.noecho()
 curses.cbreak()
+curses.curs_set(False)
 stdscr.keypad(True)
 stdscr.nodelay(True)
 
@@ -29,7 +33,7 @@ def init():
     for i in range(maxl):
         word.append([])
         for j in range(maxc):
-            word[i].append(" " if random.random() > 0.1 else ".")
+            word[i].append(" " if random.random() > 0.1 else '.')
     for _ in range(10):  # Generate 10 food items
         fl, fc = random_ge()
         fa = random.randint(1000, 10000)  # Food age (not used in this version)
@@ -100,13 +104,13 @@ def draw():
     stdscr.addstr(1, 1, f'SCORE: {score}')       
     for f in food:  # Show food
         fl, fc, fa = f
-        stdscr.addch(fl, fc, '&')
+        stdscr.addch(fl, fc, '🍎')
         
     for e in enemy:
         l, c,  = e
-        stdscr.addch(l, c, 'E')
+        stdscr.addch(l, c, E)
          
-    stdscr.addch(player_l, player_c, "X")  # Show player        
+    stdscr.addch(player_l, player_c, mi)  # Show player        
     stdscr.refresh()
 
 init()
